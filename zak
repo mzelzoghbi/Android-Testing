@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 
 printf "${GREEN} Welcome! ${NC}\n"
 
-git checkout development
+git checkout develop
 
 echo "Incrementing versionCode >>"
 
@@ -24,9 +24,15 @@ perl -i -pe 's/versionCode \K(\d+)/ $1+1 /e' $dir/app/build.gradle
 # perl -i -pe 's/versionCode \K(\d+)/ $1+1 /e' file1.txt
 
 printf "The new version is :${GREEN}`grep -a versionCode  $dir/app/build.gradle` ${NC} \n"
+
 echo "Building the app >>"
 
 # ./gradlew assembleRelease
 
 echo "APP GENERATED SUCCESSFULY"
+echo "Commiting and pushing to git repo"
+git add .
+git commit -m "Bumping versioncode to `grep -a versionCode  $dir/app/build.gradle`"
+git push origin develop
+
 echo "end----->"
