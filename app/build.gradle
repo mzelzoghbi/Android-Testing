@@ -8,13 +8,22 @@ android {
         applicationId "com.gnb.androidtesting"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
+        versionCode 37
         versionName "1.0"
+    }
+    signingConfigs {
+        release {
+            storeFile file("../fekrasw.jks")
+            storePassword "123456"
+            keyAlias "zak"
+            keyPassword "123456"
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }

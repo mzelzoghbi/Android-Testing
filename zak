@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e
+# build 1-beta
+
+# the directory of the current script
+dir=$(pwd)
+# -----------------------
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+# -----------------------
+
+
+printf "${GREEN} Welcome! ${NC}\n"
+
+git checkout development
+
+echo "Incrementing versionCode >>"
+
+printf "The old version was :${RED} `grep -a versionCode  $dir/app/build.gradle` ${NC} \n" 
+
+perl -i -pe 's/versionCode \K(\d+)/ $1+1 /e' $dir/app/build.gradle
+# perl -i -pe 's/versionCode \K(\d+)/ $1+1 /e' file1.txt
+
+printf "The new version is :${GREEN}`grep -a versionCode  $dir/app/build.gradle` ${NC} \n"
+echo "Building the app >>"
+
+# ./gradlew assembleRelease
+
+echo "APP GENERATED SUCCESSFULY"
+echo "end----->"
