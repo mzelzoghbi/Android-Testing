@@ -36,4 +36,9 @@ git add .
 git commit -m "Bumping versioncode to `grep -a versionCode  $dir/app/build.gradle`"
 git push origin develop
 
+echo "SENDING MAIL "
+
+(echo "fdsfsf" ; uuencode app/build/outputs/apk/app-release.apk app/build/outputs/apk/app-release.apk) | mail -s "Test from terminal" m.zakaria.elzoghbi@gmail.com  
+
+
 echo "end----->"
