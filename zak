@@ -27,7 +27,8 @@ printf "The new version is :${GREEN}`grep -a versionCode  $dir/app/build.gradle`
 
 echo "Building the app >>"
 
-# ./gradlew assembleRelease
+# building app
+./gradlew assembleRelease
 
 echo "APP GENERATED SUCCESSFULY"
 echo "Commiting and pushing to git repo"
