@@ -34,7 +34,7 @@ echo "APP GENERATED SUCCESSFULY"
 echo "Commiting and pushing to git repo"
 git add .
 versionNo=$(perl -nle 'print $1 if /versionCode.*?(\d+)/' $dir/app/build.gradle)
-git commit -m "Bumping versioncode to `$versionNo`"
+git commit -m "Bumping versioncode to $versionNo"
 git push origin develop
 
 echo "SENDING E-MAIL"
