@@ -33,12 +33,14 @@ echo "Building the app >>"
 echo "APP GENERATED SUCCESSFULY"
 echo "Commiting and pushing to git repo"
 git add .
-git commit -m "Bumping versioncode to `grep -a versionCode  $dir/app/build.gradle`"
+versionNo=$(perl -nle 'print $1 if /versionCode.*?(\d+)/' $dir/app/build.gradle)
+git commit -m "Bumping versioncode to `$versionNo`"
 git push origin develop
 
-echo "SENDING MAIL "
+echo "SENDING E-MAIL"
 
-(echo "fdsfsf" ; uuencode app/build/outputs/apk/app-release.apk app/build/outputs/apk/app-release.apk) | mail -s "Test from terminal" m.zakaria.elzoghbi@gmail.com  
+# sending email with body and attaching the release version
+(echo "This will be the body of the mail" ; uuencode app/build/outputs/apk/app-release.apk app/build/outputs/apk/app-release.apk) | mail -s "This is the e-mail subject" m.zakaria.elzoghbi@gmail.com  
 
 
 echo "end----->"
